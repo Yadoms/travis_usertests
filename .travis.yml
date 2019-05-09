@@ -3,6 +3,9 @@ dist: trusty
 
 sudo: required
 
+addons:
+  chrome: stable
+  
 before_script:
 # get yadoms sources
   - git clone --depth=1 -b ${BUILD_BRANCH} git://github.com/Yadoms/yadoms.git 
