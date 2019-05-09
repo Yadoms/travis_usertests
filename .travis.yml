@@ -24,8 +24,9 @@ before_script:
 
 # chrome driver
   #- bundle exec rails runner "Webdrivers::Chromedriver.update"
+  - which python
   - wget http://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip
-  - unzip chromedriver_linux64.zip -d ${PYTHONPATH}
+  - unzip chromedriver_linux64.zip -d `which python`
   - export CHROME_BIN=chromium-browser
   
 script:
