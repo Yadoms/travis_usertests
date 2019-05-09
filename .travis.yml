@@ -12,7 +12,7 @@ before_script:
 # get last yadoms linux binaries
   - wget --no-verbose -U 'Yadoms/1.0.0' http://yadoms.com/builds/linux/Yadoms-$yadomsVersion-Linux.tar.gz
   - tar xzf Yadoms-$yadomsVersion-Linux.tar.gz
-  - move Yadoms-$yadomsVersion-Linux\bin yadoms/builds/DEBUG
+  - mv Yadoms-$yadomsVersion-Linux\bin yadoms/builds/DEBUG
   
 # install python 2.7
   - apt-get install python-setuptools python-dev
