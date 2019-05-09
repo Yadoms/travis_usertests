@@ -16,7 +16,8 @@ before_script:
   
 # install python 2.7
   - sudo apt-get install python-setuptools python-dev
-  - python -m pip install selenium psutil pyvirtualdisplay unittest-xml-reporting requests
+  - sudo pip install --upgrade pip
+  - sudo python -m pip install selenium psutil pyvirtualdisplay unittest-xml-reporting requests
 
 script:
 # run tests
