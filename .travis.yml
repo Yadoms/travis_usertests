@@ -15,7 +15,7 @@ before_script:
   - mv Yadoms-$yadomsVersion-Linux/bin yadoms/builds/DEBUG
   
 # install python 2.7
-  - apt-get install python-setuptools python-dev
+  - sudo apt-get install python-setuptools python-dev
   - python -m pip install selenium psutil pyvirtualdisplay unittest-xml-reporting requests
 
 script:
