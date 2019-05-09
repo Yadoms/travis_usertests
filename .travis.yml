@@ -1,0 +1,20 @@
+language: cpp
+dist: trusty
+
+sudo: required
+
+before_script:
+# get last yadoms linux binaries
+  - wget --no-verbose -U 'Yadoms/1.0.0' http://yadoms.com/builds/linux/Yadoms-2.2.1-Linux.tar.gz
+  
+# get yadoms sources
+  - git clone --depth=1 https://github.com/Yadoms/yadoms.git yadoms
+  
+# install python 2.7
+  - apt-get install python-setuptools python-dev
+  - python -m pip install selenium psutil pyvirtualdisplay unittest-xml-reporting requests
+
+script:
+# run tests
+  - cd yadoms/tests/user
+  - python suite-html.py --headless
