@@ -7,6 +7,14 @@ addons:
   chrome: stable
   
 before_script:
+#curl with sftttttttttttttttttttp
+  - mkdir /tmp/curl
+  - cd /tmp/curl
+  - sudo apt-get update
+  - sudo apt-get install build-essential debhelper libssh2-1-dev
+  - apt-get source curl
+  - sudo apt-get build-dep curl
+
 # chrome driver
   - wget http://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip -d ~/
