@@ -25,7 +25,8 @@ before_script:
 # get last yadoms linux binaries
   - wget --no-verbose -U 'Yadoms/1.0.0' http://yadoms.com/builds/linux/Yadoms-$yadomsVersion-Linux.tar.gz
   - tar xzf Yadoms-$yadomsVersion-Linux.tar.gz
-  - mv Yadoms-$yadomsVersion-Linux/bin yadoms/builds
+  - rm -Rf yadoms/builds/*
+  - mv Yadoms-$yadomsVersion-Linux/bin/* yadoms/builds
   - ls -al yadoms/builds
   
 # install python 2.7
