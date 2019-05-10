@@ -11,11 +11,16 @@ before_script:
   - mkdir /tmp/curl
   - cd /tmp/curl
   - sudo apt-get update
-  - sudo apt-get install build-essential debhelper libssh2-1-dev
+  - sudo apt-get install build-essential debhelper libssh2-1-dev fakeroot
   - apt-get source curl
+  - DO_TEST=no
   - sudo apt-get build-dep curl
   - cd curl-*
-  - dpkg-buildpackage
+  - sudo dpkg-buildpackage
+  - cd ..
+  - dpkg -l | grep curl
+  - dpkg -i –force-overwrite curl_*.**.0-1ubuntu1.1_amd64.deb
+  - dpkg -i –force-overwrite libcurl3_*.**.0-1ubuntu1.1_amd64.deb
 
 # chrome driver
   - wget http://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip
