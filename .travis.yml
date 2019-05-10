@@ -7,21 +7,6 @@ addons:
   chrome: stable
   
 before_script:
-#curl with sftttttttttttttttttttp
-  - mkdir /tmp/curl
-  - cd /tmp/curl
-  - sudo apt-get update
-  - sudo apt-get install build-essential debhelper libssh2-1-dev fakeroot
-  - apt-get source curl
-  - DO_TEST=no
-  - sudo apt-get build-dep curl
-  - cd curl-*
-  - sudo dpkg-buildpackage
-  - cd ..
-  - dpkg -l | grep curl
-  - dpkg -i –force-overwrite curl_*.**.0-1ubuntu1.1_amd64.deb
-  - dpkg -i –force-overwrite libcurl3_*.**.0-1ubuntu1.1_amd64.deb
-
 # chrome driver
   - wget http://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip -d ~/
@@ -52,4 +37,7 @@ script:
 # run tests
   - cd yadoms/tests/user
   - python suite-html.py --headless --chrome '/usr/bin/google-chrome-stable'
-  - curl --ftp-create-dirs -T report/index.html -k sftp://${FTP_USER}:${FTP_PASSWORD}@${YADOMS_UPLOAD_URL}
+  - sudo cp report/index.html /report.html
+  - sudo chmod 777 /report.html
+  - cd ../../..
+  - python report.py
