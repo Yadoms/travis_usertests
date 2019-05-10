@@ -36,4 +36,4 @@ before_script:
 script:
 # run tests
   - cd yadoms/tests/user
-  - python suite-html.py --headless --chrome '`whereis google-chrome-stable`'
+  - python suite-html.py --headless --chrome '/usr/bin/google-chrome-stable'
