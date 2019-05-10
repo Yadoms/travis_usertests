@@ -7,9 +7,23 @@ addons:
   chrome: stable
   
 before_script:
+# chrome driver
+  #- bundle exec rails runner "Webdrivers::Chromedriver.update"
+  - which python
+  - wget http://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip -d ~/
+  - rm chromedriver_linux64.zip
+  - sudo mv -f ~/chromedriver /usr/local/share/
+  - sudo chmod +x /usr/local/share/chromedriver
+  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver  
+  - export CHROME_BIN=chromium-browser
+
+script:
+  - whereis google-chrome-stable
+  - whereis chromedriver
+  
 # get yadoms sources
   - git clone --depth=1 -b ${BUILD_BRANCH} git://github.com/Yadoms/yadoms.git 
-
   - yadomsVersion=$(grep -oP '###[[:space:]]\K.*' yadoms/sources/server/changelog.md -m 1)
 
 # get last yadoms linux binaries
@@ -22,12 +36,6 @@ before_script:
   - sudo pip install --upgrade pip
   - sudo python -m pip install selenium psutil pyvirtualdisplay unittest-xml-reporting requests
 
-# chrome driver
-  #- bundle exec rails runner "Webdrivers::Chromedriver.update"
-  - which python
-  - wget http://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip
-  - unzip chromedriver_linux64.zip -d /opt/pyenv/shims
-  - export CHROME_BIN=chromium-browser
   
 script:
 # run tests
