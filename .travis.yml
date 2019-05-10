@@ -37,4 +37,4 @@ script:
 # run tests
   - cd yadoms/tests/user
   - python suite-html.py --headless --chrome '/usr/bin/google-chrome-stable'
-  - /usr/local/opt/curl/bin/curl --ftp-create-dirs -T report/index.html -k sftp://${FTP_USER}:${FTP_PASSWORD}@${YADOMS_UPLOAD_URL}
+  - curl --ftp-create-dirs -T report/index.html -k sftp://${FTP_USER}:${FTP_PASSWORD}@${YADOMS_UPLOAD_URL}
