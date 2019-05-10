@@ -30,7 +30,7 @@ before_script:
   - ls -al yadoms/builds
   
 # install python 2.7
-  - sudo apt-get install python-setuptools python-dev ulimit
+  - sudo apt-get install python-setuptools python-dev
   - sudo pip install --upgrade pip
   - sudo python -m pip install selenium psutil pyvirtualdisplay unittest-xml-reporting requests pysftp
   - ulimit -s 1082768  
