@@ -8,8 +8,6 @@ addons:
   
 before_script:
 # chrome driver
-  #- bundle exec rails runner "Webdrivers::Chromedriver.update"
-  - which python
   - wget http://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip -d ~/
   - rm chromedriver_linux64.zip
@@ -17,8 +15,6 @@ before_script:
   - sudo chmod +x /usr/local/share/chromedriver
   - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver  
   - export CHROME_BIN=chromium-browser
-
-script:
   - whereis google-chrome-stable
   - whereis chromedriver
   
@@ -40,4 +36,4 @@ script:
 script:
 # run tests
   - cd yadoms/tests/user
-  - python suite-html.py --headless
+  - python suite-html.py --headless --chrome '`whereis google-chrome-stable`'
